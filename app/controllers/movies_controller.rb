@@ -38,8 +38,8 @@ class MoviesController < ApplicationController
     @movies = Movie.where("rating in (?)", @ratings.keys)
     session[:ratings] = @ratings
 
-    if @category and @sort
-      @movies = @movies = Movie.order(@category)
+    if @category and @sort 
+      @movies = Movie.where("rating in (?)", @ratings.keys).order(@category)
       session[:category] = @category
       session[:sort] = @sort
     end
